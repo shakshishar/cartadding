@@ -80,15 +80,13 @@ count+=products.qty;
     return count;
   }
 
-  getCartTotal=()=>{
-    const {prodcuts}=this.state;
-    let cartTotal=0;
-    prodcuts.map((product)=>{
-      cartTotal=cartTotal+product.qty*product.price
-    return null;
-    })
-
-  return cartTotal;
+  getCartTotal = () => {
+    const { products } = this.state;
+    const cartTotal = products.reduce((total, product) => {
+      return total + product.qty * product.price;
+    }, 0);
+  
+    return cartTotal;
   }
 render(){
 
